@@ -1,2 +1,1 @@
-# NodeJS-Application
-Framework agnostic NodeJS application structure
+# Framework agnostic NodeJS application structure
