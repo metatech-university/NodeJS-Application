@@ -1,0 +1,20 @@
+{
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "globals": {
+    "api": "readonly",
+    "db": "readonly",
+    "common": "readonly"
+  },
+  "rules": {
+    "strict": ["error", "never"],
+    "id-denylist": [
+      2,
+      "api",
+      "db",
+      "common",
+      "console"
+    ]
+  }
+}
