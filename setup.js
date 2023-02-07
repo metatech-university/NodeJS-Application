@@ -4,7 +4,14 @@ const fsp = require('node:fs').promises;
 const path = require('node:path');
 const pg = require('pg');
 const metasql = require('metasql');
-const config = require('./config.js');
+
+const CONNECTION = {
+  host: '127.0.0.1',
+  port: 5432,
+  database: 'postgres',
+  user: 'postgres',
+  password: 'postgres',
+};
 
 const DB = path.join(process.cwd(), './db');
 const SCHEMAS = path.join(process.cwd(), './schemas');
@@ -39,11 +46,11 @@ const executeFile = async (client, name) => {
   const typesFile = path.join(DB, 'database.d.ts');
   const domainTypes = path.join(DB, 'domain.d.ts');
   await fsp.rename(typesFile, domainTypes);
-  const inst = new pg.Client({ ...config.db, ...config.pg });
+  const inst = new pg.Client(CONNECTION);
   await inst.connect();
   await executeFile(inst, 'install.sql');
   await inst.end();
-  const db = new pg.Client(config.db);
+  const db = new pg.Client(CONNECTION);
   await db.connect();
   await executeFile(db, 'structure.sql');
   await executeFile(db, 'data.sql');
