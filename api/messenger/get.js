@@ -1,15 +1,10 @@
 ({
   access: 'public',
   method: async ({ name }) => {
-    const ctx = {
-      pg: lib.db.connection,
-      /*processId: new uuid,
-        logger: new Logger(processId)*/
-    };
-    /*The following try catch should be extracted
-      or even moved to system code*/
+    context.state = { pg: lib.db.connection };
+
     try {
-      const chat = await domain.Chat.get(ctx, name);
+      const chat = await domain.Chat.get(context, name);
       return { status: 'fulfilled', value: { chat } };
     } catch (error) {
       return {
