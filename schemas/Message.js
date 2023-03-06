@@ -1,8 +1,16 @@
 ({
   Entity: {},
 
+  thread: 'Message', // Link to a 'parent' message
+
   chat: 'Chat',
   area: 'Area',
   from: 'Account',
-  text: 'string',
+
+  /* {
+    kind: 'text' | 'image' | 'video' | 'file'
+    media?: string[], // urls of images, files, videos
+    text?: string
+  } */
+  data: { type: 'json' },
 });
