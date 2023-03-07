@@ -7,10 +7,12 @@
   area: 'Area',
   from: 'Account',
 
-  /* {
-    kind: 'text' | 'image' | 'video' | 'file'
-    media?: string[], // urls of images, files, videos
-    text?: string
-  } */
-  data: { type: 'json' },
+  data: {
+    type: 'json',
+    schema: {
+      kind: { enum: ['text', 'image', 'video', 'file'] },
+      media: { array: 'string', required: false },
+      text: { type: 'string', required: false }
+    },
+  },
 });
