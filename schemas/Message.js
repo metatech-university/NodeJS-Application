@@ -1,7 +1,7 @@
 ({
   Entity: {},
 
-  thread: 'Message', // Link to a 'parent' message
+  thread: { type: 'Message', required: false }, // Link to a 'parent' message
 
   chat: 'Chat',
   area: 'Area',
