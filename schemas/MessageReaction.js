@@ -2,6 +2,6 @@
   Entity: {},
 
   message: 'Message',
-  reaction: 'string',
+  reaction: 'string', // emoji
   from: 'Account',
 });
