@@ -5,7 +5,12 @@
   "globals": {
     "api": "readonly",
     "db": "readonly",
-    "common": "readonly"
+    "common": "readonly",
+    "domain": "readonly",
+    "lib": "readonly",
+    "context": "readonly",
+    "config": "readonly",
+    "metarhia": "readonly"
   },
   "rules": {
     "strict": ["error", "never"],
