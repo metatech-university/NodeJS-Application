@@ -2,6 +2,8 @@
 
 const transport = {};
 
+let callId = 1;
+
 transport.http = (url) => (structure) => {
   const api = {};
   const services = Object.keys(structure);
@@ -37,7 +39,8 @@ transport.ws = (url) => (structure) => {
     for (const method of methods) {
       api[name][method] = (...args) =>
         new Promise((resolve) => {
-          const packet = { name, method, args };
+          const target = name + '/' + method;
+          const packet = { call: callId, [target]: args };
           socket.send(JSON.stringify(packet));
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
