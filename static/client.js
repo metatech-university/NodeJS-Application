@@ -2,7 +2,7 @@
 
 const transport = {};
 
-let callId = 1;
+let callId = 0;
 
 transport.http = (url) => (structure) => {
   const api = {};
@@ -14,10 +14,12 @@ transport.http = (url) => (structure) => {
     for (const method of methods) {
       api[name][method] = (...args) =>
         new Promise((resolve, reject) => {
-          fetch(`${url}/api/${name}/${method}`, {
+          const id = callId++;
+          const packet = { type: 'call', id, interface: name, method, args };
+          fetch(`${url}/api`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ args }),
+            body: JSON.stringify(packet),
           }).then((res) => {
             if (res.status === 200) resolve(res.json());
             else reject(new Error(`Status Code: ${res.status}`));
@@ -39,8 +41,8 @@ transport.ws = (url) => (structure) => {
     for (const method of methods) {
       api[name][method] = (...args) =>
         new Promise((resolve) => {
-          const target = name + '/' + method;
-          const packet = { call: callId, [target]: args };
+          const id = callId++;
+          const packet = { type: 'call', id, interface: name, method, args };
           socket.send(JSON.stringify(packet));
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
