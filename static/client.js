@@ -11,12 +11,13 @@ transport.http = (url) => (structure) => {
     api[name] = {};
     const service = structure[name];
     const methods = Object.keys(service);
-    for (const method of methods) {
-      api[name][method] = (...args) =>
+    for (const methodName of methods) {
+      api[name][methodName] = (...args) =>
         new Promise((resolve, reject) => {
           const id = callId++;
-          const packet = { type: 'call', id, interface: name, method, args };
-          fetch(`${url}/api`, {
+          const method = name + '/' + methodName;
+          const packet = { type: 'call', id, method, args };
+          fetch(url + '/api', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(packet),
@@ -38,11 +39,12 @@ transport.ws = (url) => (structure) => {
     api[name] = {};
     const service = structure[name];
     const methods = Object.keys(service);
-    for (const method of methods) {
-      api[name][method] = (...args) =>
+    for (const methodName of methods) {
+      api[name][methodName] = (...args) =>
         new Promise((resolve) => {
           const id = callId++;
-          const packet = { type: 'call', id, interface: name, method, args };
+          const method = name + '/' + methodName;
+          const packet = { type: 'call', id, method, args };
           socket.send(JSON.stringify(packet));
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
