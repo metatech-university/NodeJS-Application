@@ -11,13 +11,16 @@ transport.http = (url) => (structure) => {
     api[name] = {};
     const service = structure[name];
     const methods = Object.keys(service);
-    for (const method of methods) {
-      api[name][method] = (...args) =>
+    for (const methodName of methods) {
+      api[name][methodName] = (...args) =>
         new Promise((resolve, reject) => {
-          fetch(`${url}/api/${name}/${method}`, {
+          const id = callId++;
+          const method = name + '/' + methodName;
+          const packet = { type: 'call', id, method, args };
+          fetch(url + '/api', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ args }),
+            body: JSON.stringify(packet),
           }).then((res) => {
             if (res.status === 200) resolve(res.json());
             else reject(new Error(`Status Code: ${res.status}`));
@@ -36,11 +39,12 @@ transport.ws = (url) => (structure) => {
     api[name] = {};
     const service = structure[name];
     const methods = Object.keys(service);
-    for (const method of methods) {
-      api[name][method] = (...args) =>
+    for (const methodName of methods) {
+      api[name][methodName] = (...args) =>
         new Promise((resolve) => {
-          const target = name + '/' + method;
-          const packet = { call: callId, [target]: args };
+          const id = callId++;
+          const method = name + '/' + methodName;
+          const packet = { type: 'call', id, method, args };
           socket.send(JSON.stringify(packet));
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
