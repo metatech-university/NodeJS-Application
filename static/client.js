@@ -2,7 +2,7 @@
 
 const transport = {};
 
-let callId = 0;
+let callId = 1;
 
 transport.http = (url) => (structure) => {
   const api = {};
