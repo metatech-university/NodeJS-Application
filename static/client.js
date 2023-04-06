@@ -12,6 +12,8 @@ transport.http = (url) => (structure) => {
     const service = structure[name];
     const methods = Object.keys(service);
     for (const methodName of methods) {
+      // TODO: Rewrite code to avoid the eslint issue
+      // eslint-disable-next-line no-loop-func
       api[name][methodName] = (...args) =>
         new Promise((resolve, reject) => {
           const id = callId++;
@@ -40,6 +42,8 @@ transport.ws = (url) => (structure) => {
     const service = structure[name];
     const methods = Object.keys(service);
     for (const methodName of methods) {
+      // TODO: Rewrite code to avoid the eslint issue
+      // eslint-disable-next-line no-loop-func
       api[name][methodName] = (...args) =>
         new Promise((resolve) => {
           const id = callId++;

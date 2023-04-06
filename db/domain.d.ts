@@ -17,11 +17,47 @@ interface Area {
   areaId?: string;
 }
 
+interface Chat {
+  createdById: string;
+  name: string;
+  chatId?: string;
+}
+
+interface ChatMember {
+  accountId: string;
+  chatId: string;
+  status: string;
+  chatMemberId?: string;
+}
+
 interface Message {
+  threadId?: string;
+  chatId: string;
   areaId: string;
   fromId: string;
-  text: string;
+  data: string;
   messageId?: string;
+}
+
+interface MessageReaction {
+  messageId: string;
+  reaction: string;
+  fromId: string;
+  messageReactionId?: string;
+}
+
+interface PersonalFolder {
+  parentId?: string;
+  ownerId: string;
+  name: string;
+  logo: string;
+  personalFolderId?: string;
+}
+
+interface PersonalFolderChat {
+  personalFolderId: string;
+  chatId: string;
+  personalFolderChatId?: string;
 }
 
 interface Session {
