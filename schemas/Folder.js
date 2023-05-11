@@ -1,8 +1,9 @@
 ({
   Entity: {},
 
-  parent: { type: 'PersonalFolder', required: false },
+  parent: '?Folder',
   owner: 'Account',
   name: 'string',
   logo: 'string', // emoji
+  chats: { many: 'Chat' },
 });
