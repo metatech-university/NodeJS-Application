@@ -1,7 +1,7 @@
 ({
   Entity: {},
 
-  thread: { type: 'Message', required: false }, // Link to a 'parent' message
+  thread: '?Message', // parent message
 
   chat: 'Chat',
   area: 'Area',
@@ -12,7 +12,7 @@
     schema: {
       kind: { enum: ['text', 'image', 'video', 'file'] },
       media: { array: 'string', required: false },
-      text: { type: 'string', required: false }
+      text: { type: 'string', required: false },
     },
   },
 });
