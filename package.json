@@ -14,7 +14,7 @@
     "node": "16 || 18 || 19"
   },
   "dependencies": {
-    "metasql": "^2.1.2",
+    "metasql": "^3.0.0-alpha.1",
     "pg": "^8.8.0"
   },
   "devDependencies": {
