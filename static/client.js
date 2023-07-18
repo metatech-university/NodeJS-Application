@@ -12,9 +12,13 @@ transport.http = (url) => (structure) => {
     const service = structure[name];
     const methods = Object.keys(service);
     for (const methodName of methods) {
-      api[name][methodName] = (...args) =>
+      api[name][methodName] = (...values) =>
         new Promise((resolve, reject) => {
           const id = callId++;
+          const entries = structure[name][methodName].map((key, index) => {
+            return [key, values[index]];
+          });
+          const args = Object.fromEntries(entries);
           const method = name + '/' + methodName;
           const packet = { type: 'call', id, method, args };
           fetch(url + '/api', {
@@ -40,9 +44,13 @@ transport.ws = (url) => (structure) => {
     const service = structure[name];
     const methods = Object.keys(service);
     for (const methodName of methods) {
-      api[name][methodName] = (...args) =>
+      api[name][methodName] = (...values) =>
         new Promise((resolve) => {
           const id = callId++;
+          const entries = structure[name][methodName].map((key, index) => {
+            return [key, values[index]];
+          });
+          const args = Object.fromEntries(entries);
           const method = name + '/' + methodName;
           const packet = { type: 'call', id, method, args };
           socket.send(JSON.stringify(packet));
