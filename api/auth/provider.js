@@ -10,7 +10,7 @@
 
   startSession(token, data, fields = {}) {
     const record = { token, data: JSON.stringify(data), ...fields };
-    db.pg.insert('Session', record);
+    db.crud('Session').create(record);
   },
 
   async restoreSession(token) {
@@ -28,6 +28,6 @@
   },
 
   async getUser(login) {
-    return db.pg.row('Account', { login });
+    return db.crud('Account').read(login, 'login');
   },
 });
