@@ -1,5 +1,3 @@
-'use strict';
-
 const fsp = require('node:fs').promises;
 const path = require('node:path');
 const pg = require('pg');
@@ -9,7 +7,7 @@ const POSTGRES = {
   host: '127.0.0.1',
   port: 5432,
   database: 'postgres',
-  user: 'postgres',
+  user: 'abuglak',
   password: 'postgres',
 };
 
