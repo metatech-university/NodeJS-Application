@@ -1,18 +1,18 @@
 INSERT INTO "Identifier" DEFAULT VALUES;
 INSERT INTO "Account" ("id", "login", "password")
-VALUES (lastval(), 'admin', 'ypMEd9FwvtlOjcvH94iICQ==:V6LnSOVwXzENxeLCJk59Toadea7oaA1IxYulAOtKkL9tBxjEPOw085vYalEdLDoe8xbrXQlhh7QRGzrSe8Bthw==');
+VALUES (lastval(), 'admin', '$scrypt$N=32768,r=8,p=1,maxmem=67108864$Y33PUdCTNJuYb7FKkfbT/E4zWi2cukceqV7vBeL+ZmI$vPMMSHnn/izf7lnQtv9/Ilync+JmKEHwn4vB94X3qe+QS2D9jqjRvZ8+tzSk7A6rB3paznAjlKaXK2C/xYU9Pg');
 
 INSERT INTO "Identifier" DEFAULT VALUES;
 INSERT INTO "Account" ("id", "login", "password")
-VALUES (lastval(), 'marcus', 'dpHw0OUNBz76nuqrXZbeYQ==:wpvUVgi8Yp9rJ0yZyBWecaWP2EL/ahpxZY74KOVfhAYbAZSq6mWqjsQwtCvIPcSKZqUVpVb13JcSciB2fA+6Tg==');
+VALUES (lastval(), 'marcus', '$scrypt$N=32768,r=8,p=1,maxmem=67108864$CEUCHFbTTOvyD/VMi3wrFE1DYS9UNYQbTmL6fOx1BwY$MU1M+TH4/6lmq5b8k/kyCvaNXC68oB9oTTDvtRoaeu61+1EKHNGx2E8FfUWuB7Y3DBkfKqhN37Y7FnIuYgyTzQ');
 
 INSERT INTO "Identifier" DEFAULT VALUES;
 INSERT INTO "Account" ("id", "login", "password")
-VALUES (lastval(), 'user', 'r8zb8AdrlPSh5wNy6hqOxg==:HyO5rvOFLtwzU+OZ9qFi3ADXlVccDJWGSfUS8mVq43spJ6sxyliUdW3i53hOPdkFAtDn3EAQMttOlIoJap1lTQ==');
+VALUES (lastval(), 'user', '$scrypt$N=32768,r=8,p=1,maxmem=67108864$dSBT3AVxqctYVBDRDaIzc7e9Nxvtoqf3kQgdSrdo+5Y$Zv3CriftrUsPmGaqqptvVsw8D18J7G+VYLsasqJGSLQpqkuAi2Tm4sMgpXvwe3GfDv6KA9XLC5dH4VlGGddJiw  ');
 
 INSERT INTO "Identifier" DEFAULT VALUES;
 INSERT INTO "Account" ("id", "login", "password")
-VALUES (lastval(), 'iskandar', 'aqX1O4bKXiwC/Jh2EKNIYw==:bpE4TARNg09vb2Libn1c00YRxcvoklB9zVSbD733LwQQFUuAm7WHP85PbZXwEbbeOVPIFHgflR4cvEmvYkr76g==');
+VALUES (lastval(), 'iskandar', '$scrypt$N=32768,r=8,p=1,maxmem=67108864$SDeMXuBRl38SNKpf5+1abpIKrUhp/EfX9YsHQLwlrnA$KEY2UOaUJEEYtURagtobQFWxBIBvOzMpAqwWkiDXGI/NJwGowbzswoNLbzcGcsGTjs05eHc00jaSgNsaVazHew');
 
 -- Examples login/password
 -- admin/123456
